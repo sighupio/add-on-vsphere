@@ -45,7 +45,7 @@ Check the [compatibility matrix][compatibility-matrix] for additional informatio
 
 ### Download the packages
 
-1. List the bases in a `Furyfile.yml` file
+List the bases in a `Furyfile.yml` file
 
 ```yaml
 bases:
