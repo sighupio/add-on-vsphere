@@ -43,21 +43,21 @@ Check the [compatibility matrix][compatibility-matrix] for additional informatio
 | ----------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [furyctl][furyctl-repo] | `>=0.6.0` | The recommended tool to download and manage KFD modules and their packages. To learn more about `furyctl` read the [official documentation][furyctl-repo]. |
 
-### Provision the cluster
+### Download the packages
 
-1. List the role in a `Furyfile.yml` file
+1. List the bases in a `Furyfile.yml` file
 
 ```yaml
-roles:
+bases:
   - name: vsphere
     version: v1.0.0
 ```
 
 > See `furyctl` [documentation][furyctl-repo] for additional details about `Furyfile.yml` format.
 
-1. Execute `furyctl vendor -H` to download the roles
+1. Execute `furyctl legacy vendor -H` to download the katalog
 
-2. Inspect the downloaded roles inside `./vendor/katalog/vsphere`
+2. Inspect the downloaded katalog inside `./vendor/katalog/vsphere`
 
 3. Check each package documentation for the configuration with vSphere
 
