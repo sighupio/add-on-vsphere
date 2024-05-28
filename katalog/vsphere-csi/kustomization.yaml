@@ -4,6 +4,24 @@ kind: Kustomization
 namespace: vmware-system-csi
 
 resources:
-- namespace.yaml
-- csi-vsphere-secret.yaml
-- vsphere-csi-driver.yaml
+  - namespace.yaml
+  - csi-vsphere-secret.yaml
+  - vsphere-csi-driver.yaml
+
+images:
+  - name: k8s.gcr.io/sig-storage/livenessprobe
+    newName: registry.sighup.io/fury/vsphere/livenessprobe
+  - name: k8s.gcr.io/sig-storage/csi-attacher
+    newName: registry.sighup.io/fury/vsphere/csi-attacher
+  - name: k8s.gcr.io/sig-storage/csi-snapshotter
+    newName: registry.sighup.io/fury/vsphere/csi-snapshotter
+  - name: k8s.gcr.io/sig-storage/csi-resizer
+    newName: registry.sighup.io/fury/vsphere/csi-resizer
+  - name: k8s.gcr.io/sig-storage/csi-provisioner
+    newName: registry.sighup.io/fury/vsphere/csi-provisioner
+  - name: k8s.gcr.io/sig-storage/csi-node-driver-registrar
+    newName: registry.sighup.io/fury/vsphere/csi-node-driver-registrar
+  - name: gcr.io/cloud-provider-vsphere/csi/release/driver
+    newName: registry.sighup.io/fury/vsphere/vsphere-csi-driver
+  - name: gcr.io/cloud-provider-vsphere/csi/release/syncer
+    newName: registry.sighup.io/fury/vsphere/vsphere-csi-syncer
