@@ -5,7 +5,7 @@
 </h1>
 <!-- markdownlint-enable MD033 -->
 
-![Release](https://img.shields.io/badge/Latest%20Release-v1.1.0-blue)
+![Release](https://img.shields.io/badge/Latest%20Release-v1.1.1-blue)
 ![License](https://img.shields.io/github/license/sighupio/fury-kubernetes-vsphere?label=License)
 ![Slack](https://img.shields.io/badge/slack-@kubernetes/fury-yellow.svg?logo=slack&label=Slack)
 
@@ -50,7 +50,7 @@ List the bases in a `Furyfile.yml` file
 ```yaml
 bases:
   - name: vsphere
-    version: v1.1.0
+    version: v1.1.1
 ```
 
 > See `furyctl` [documentation][furyctl-repo] for additional details about `Furyfile.yml` format.
