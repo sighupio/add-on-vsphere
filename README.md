@@ -5,7 +5,7 @@
 </h1>
 <!-- markdownlint-enable MD033 -->
 
-![Release](https://img.shields.io/badge/Latest%20Release-v1.2.0-blue)
+![Release](https://img.shields.io/badge/Latest%20Release-v1.3.0-blue)
 ![License](https://img.shields.io/github/license/sighupio/fury-kubernetes-vsphere?label=License)
 ![Slack](https://img.shields.io/badge/slack-@kubernetes/fury-yellow.svg?logo=slack&label=Slack)
 
@@ -26,7 +26,7 @@ The following packages are included in the Fury Kubernetes vSphere module:
 
 | Package                                        | Version  | Description                                                                   |
 | ---------------------------------------------- | -------- | ----------------------------------------------------------------------------- |
-| [vsphere-cm](katalog/vsphere-cm)               | `1.28.1` | Kubernetes Cloud Provider for vSphere                                         |
+| [vsphere-cm](katalog/vsphere-cm)               | `1.29.0` | Kubernetes Cloud Provider for vSphere                                         |
 | [vsphere-csi](katalog/vsphere-csi)             | `3.2.0`  | vSphere storage Container Storage Interface (CSI) plugin                      |
 
 Click on each package to see its full documentation.
@@ -50,7 +50,7 @@ List the bases in a `Furyfile.yml` file
 ```yaml
 bases:
   - name: vsphere
-    version: v1.2.0
+    version: v1.3.0
 ```
 
 > See `furyctl` [documentation][furyctl-repo] for additional details about `Furyfile.yml` format.
