@@ -3,3 +3,7 @@ kind: Kustomization
 
 resources:
   - vsphere-cloud-controller-manager.yaml
+
+images:
+  - name: gcr.io/cloud-provider-vsphere/cpi/release/manager
+    newName: registry.sighup.io/fury/vsphere/vsphere-cpi-manager
