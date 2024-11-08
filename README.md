@@ -26,8 +26,8 @@ The following packages are included in the Fury Kubernetes vSphere module:
 
 | Package                                        | Version  | Description                                                                   |
 | ---------------------------------------------- | -------- | ----------------------------------------------------------------------------- |
-| [vsphere-cm](katalog/vsphere-cm)               | `1.29.0` | Kubernetes Cloud Provider for vSphere                                         |
-| [vsphere-csi](katalog/vsphere-csi)             | `3.2.0`  | vSphere storage Container Storage Interface (CSI) plugin                      |
+| [vsphere-cm](katalog/vsphere-cm)               | `1.30.0` | Kubernetes Cloud Provider for vSphere                                         |
+| [vsphere-csi](katalog/vsphere-csi)             | `3.3.1`  | vSphere storage Container Storage Interface (CSI) plugin                      |
 
 Click on each package to see its full documentation.
 
@@ -41,7 +41,7 @@ Check the [compatibility matrix][compatibility-matrix] for additional informatio
 
 | Tool                    | Version   | Description                                                                                                                                                |
 | ----------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [furyctl][furyctl-repo] | `>=0.25.0` | The recommended tool to download and manage KFD modules and their packages. To learn more about `furyctl` read the [official documentation][furyctl-repo]. |
+| [furyctl][furyctl-repo] | `>=0.29.0` | The recommended tool to download and manage KFD modules and their packages. To learn more about `furyctl` read the [official documentation][furyctl-repo]. |
 
 ### Download the packages
 
@@ -50,7 +50,7 @@ List the bases in a `Furyfile.yml` file
 ```yaml
 bases:
   - name: vsphere
-    version: v1.3.0
+    version: v1.4.0
 ```
 
 > See `furyctl` [documentation][furyctl-repo] for additional details about `Furyfile.yml` format.
