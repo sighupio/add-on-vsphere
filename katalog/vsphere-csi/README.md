@@ -8,8 +8,8 @@ Follow all the [prerequisites from `vsphere-cm` modules](../vsphere-cm/).
 
 ## Image repository and tag
 
-- `gcr.io/cloud-provider-vsphere/csi/release/driver:v3.1.2`
-- `gcr.io/cloud-provider-vsphere/csi/release/syncer:v3.1.2`
+- `gcr.io/cloud-provider-vsphere/csi/release/driver:v3.3.1`
+- `gcr.io/cloud-provider-vsphere/csi/release/syncer:v3.3.1`
 - `k8s.gcr.io/sig-storage/csi-attacher:v4.3.0`
 - `k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.8.0`
 - `k8s.gcr.io/sig-storage/csi-provisioner:v3.5.0`
