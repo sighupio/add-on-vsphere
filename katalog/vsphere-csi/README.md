@@ -8,14 +8,14 @@ Follow all the [prerequisites from `vsphere-cm` modules](../vsphere-cm/).
 
 ## Image repository and tag
 
-- `gcr.io/cloud-provider-vsphere/csi/release/driver:v3.1.2`
-- `gcr.io/cloud-provider-vsphere/csi/release/syncer:v3.1.2`
-- `k8s.gcr.io/sig-storage/csi-attacher:v4.3.0`
-- `k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.8.0`
-- `k8s.gcr.io/sig-storage/csi-provisioner:v3.5.0`
-- `k8s.gcr.io/sig-storage/csi-resizer:v1.8.0`
-- `k8s.gcr.io/sig-storage/csi-snapshotter:v6.2.2`
-- `k8s.gcr.io/sig-storage/livenessprobe:v2.10.0`
+- `registry.sighup.io/fury/csi-vsphere/driver:v3.3.1`
+- `registry.sighup.io/fury/csi-vsphere/syncer:v3.3.1`
+- `registry.sighup.io/fury/sig-storage/csi-attacher:v4.5.1`
+- `registry.sighup.io/fury/sig-storage/csi-node-driver-registrar:v2.10.0`
+- `registry.sighup.io/fury/sig-storage/csi-provisioner:v4.0.1`
+- `registry.sighup.io/fury/sig-storage/csi-resizer:v1.10.1`
+- `registry.sighup.io/fury/sig-storage/csi-snapshotter:v7.0.2`
+- `registry.sighup.io/fury/sig-storage/livenessprobe:v2.12.0`
 
 ## Setting credentials
 

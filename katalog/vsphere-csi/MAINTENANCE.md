@@ -11,5 +11,8 @@ You can use `go-getter` to download the files more easily:
 # install go-getter if you don't have it in your system:
 $ go install github.com/hashicorp/go-getter@latest
 # Get the files. Pay attention to the ?ref= parameter, you should put the right tag there.
-$ go-getter "github.com/kubernetes-sigs/vsphere-csi-driver.git?ref=v3.1.2//manifests//vanilla" /tmp/vanilla
+$ go-getter "github.com/kubernetes-sigs/vsphere-csi-driver.git?ref=v3.3.1//manifests//vanilla" /tmp/vanilla
 ```
+
+## NOTE
+- Since vsphere-csi is now a public project, you must change the currently base images used in the `vanilla` manifests gcr.io/cloud-provider-vsphere/csi` with `registry.k8s.io/csi-vsphere/`  
