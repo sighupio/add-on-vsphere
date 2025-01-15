@@ -1,0 +1,166 @@
+# Copyright (c) 2017-present SIGHUP s.r.l All rights reserved.
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+name: license
+kind: pipeline
+type: docker
+
+clone:
+  depth: 1
+
+steps:
+  - name: check
+    image: docker.io/library/golang:1.20
+    pull: always
+    commands:
+      - go install github.com/google/addlicense@v1.1.1
+      - addlicense -c "SIGHUP s.r.l" -v -l bsd --check .
+
+---
+name: policeman
+kind: pipeline
+type: docker
+
+clone:
+  depth: 1
+
+platform:
+  os: linux
+  arch: amd64
+
+depends_on:
+  - license
+
+steps:
+  - name: lint
+    image: quay.io/sighup/policeman
+    pull: always
+    environment:
+      # Identifies false positives like missing 'selector'.
+      # Doing this is valid for Kustomize patches
+      VALIDATE_KUBERNETES_KUBEVAL: "false"
+      # Some duplicated code is intended.
+      VALIDATE_JSCPD: "false"
+      # hadolint already validated dockerfiles
+      VALIDATE_DOCKERFILE: "false"
+      # Disable natural language checks
+      VALIDATE_NATURAL_LANGUAGE: "false"
+      # Disable .env files validation
+      VALIDATE_ENV: "false"
+    depends_on:
+      - clone
+
+  - name: render
+    image: quay.io/sighup/e2e-testing:1.1.0_3.12.0_1.31.1_3.10.0_4.33.3
+    pull: always
+    depends_on:
+      - clone
+    commands:
+      - kustomize build katalog/vsphere-cm > vsphere-cm.yml
+      - kustomize build katalog/vsphere-csi > vsphere-csi.yml
+
+  - name: check-deprecated-apis
+    image: us-docker.pkg.dev/fairwinds-ops/oss/pluto:v5
+    pull: always
+    depends_on:
+      - render
+    commands:
+      # Using --ignore-deprecations because we don't want the CI to fail when the API has not been removed yet.
+      # vsphere-cm
+      - /pluto detect vsphere-cm.yml --ignore-deprecations --target-versions=k8s=v1.29.0
+      - /pluto detect vsphere-cm.yml --ignore-deprecations --target-versions=k8s=v1.30.0
+      # vsphere-csi
+      - /pluto detect vsphere-csi.yml --ignore-deprecations --target-versions=k8s=v1.29.0
+      - /pluto detect vsphere-csi.yml --ignore-deprecations --target-versions=k8s=v1.30.0
+
+---
+name: release
+kind: pipeline
+type: docker
+
+depends_on:
+  - license
+  - policeman
+
+platform:
+  os: linux
+  arch: amd64
+
+trigger:
+  ref:
+    include:
+      - refs/tags/**
+
+steps:
+  - name: prepare-tar-gz
+    image: alpine:latest
+    pull: always
+    depends_on: [clone]
+    commands:
+      - tar -zcvf fury-kubernetes-vsphere-${DRONE_TAG}.tar.gz katalog/ LICENSE README.md
+    when:
+      ref:
+        include:
+          - refs/tags/**
+
+  - name: prepare-release-notes
+    image: quay.io/sighup/fury-release-notes-plugin:3.7_2.8.4
+    pull: always
+    depends_on: [clone]
+    settings:
+      release_notes_file_path: release-notes.md
+    when:
+      ref:
+        include:
+          - refs/tags/**
+
+  - name: publish-prerelease
+    image: plugins/github-release
+    pull: always
+    depends_on:
+      - prepare-tar-gz
+      - prepare-release-notes
+    settings:
+      api_key:
+        from_secret: github_token
+      file_exists: overwrite
+      files:
+        - fury-kubernetes-vsphere-${DRONE_TAG}.tar.gz
+      prerelease: true
+      overwrite: true
+      title: "Preview ${DRONE_TAG}"
+      note: release-notes.md
+      checksum:
+        - md5
+        - sha256
+    when:
+      ref:
+        include:
+          - refs/tags/v**-rc**
+
+  - name: publish-stable
+    image: plugins/github-release
+    pull: always
+    depends_on:
+      - prepare-tar-gz
+      - prepare-release-notes
+    settings:
+      api_key:
+        from_secret: github_token
+      file_exists: overwrite
+      files:
+        - fury-kubernetes-vsphere-${DRONE_TAG}.tar.gz
+      prerelease: false
+      overwrite: true
+      title: "Release ${DRONE_TAG}"
+      note: release-notes.md
+      checksum:
+        - md5
+        - sha256
+    when:
+      ref:
+        exclude:
+          - refs/tags/v**-rc**
+        include:
+          - refs/tags/v**
