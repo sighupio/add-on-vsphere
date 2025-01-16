@@ -5,7 +5,7 @@
 </h1>
 <!-- markdownlint-enable MD033 -->
 
-![Release](https://img.shields.io/badge/Latest%20Release-v1.3.0-blue)
+![Release](https://img.shields.io/badge/Latest%20Release-v1.4.0-blue)
 ![License](https://img.shields.io/github/license/sighupio/fury-kubernetes-vsphere?label=License)
 ![Slack](https://img.shields.io/badge/slack-@kubernetes/fury-yellow.svg?logo=slack&label=Slack)
 
@@ -74,7 +74,7 @@ bases:
 
 ### Reporting Issues
 
-In case you experience any problems with the module, please [open a new issue](https://github.com/sighupio/fury-kubernetes-on-premises/issues/new/choose).
+In case you experience any problems with the module, please [open a new issue](https://github.com/sighupio/fury-kubernetes-vsphere/issues/new/choose).
 
 ## License
 
