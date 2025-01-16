@@ -68,10 +68,8 @@ steps:
     commands:
       # Using --ignore-deprecations because we don't want the CI to fail when the API has not been removed yet.
       # vsphere-cm
-      - /pluto detect vsphere-cm.yml --ignore-deprecations --target-versions=k8s=v1.29.0
       - /pluto detect vsphere-cm.yml --ignore-deprecations --target-versions=k8s=v1.30.0
       # vsphere-csi
-      - /pluto detect vsphere-csi.yml --ignore-deprecations --target-versions=k8s=v1.29.0
       - /pluto detect vsphere-csi.yml --ignore-deprecations --target-versions=k8s=v1.30.0
 
 ---
