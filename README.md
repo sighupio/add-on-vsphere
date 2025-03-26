@@ -1,7 +1,11 @@
 <!-- markdownlint-disable MD033 -->
-<h1>
-    <img src="https://github.com/sighupio/fury-distribution/blob/main/docs/assets/fury-epta-white.png?raw=true" align="left" width="90" style="margin-right: 15px"/>
-    Kubernetes Fury vSphere
+<h1 align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sighupio/distribution/refs/heads/main/docs/assets/white-logo.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sighupio/distribution/refs/heads/main/docs/assets/black-logo.png">
+  <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="https://raw.githubusercontent.com/sighupio/distribution/refs/heads/main/docs/assets/white-logo.png">
+</picture><br/>
+  vSphere Add-On Module
 </h1>
 <!-- markdownlint-enable MD033 -->
 
@@ -9,20 +13,20 @@
 ![License](https://img.shields.io/github/license/sighupio/fury-kubernetes-vsphere?label=License)
 ![Slack](https://img.shields.io/badge/slack-@kubernetes/fury-yellow.svg?logo=slack&label=Slack)
 
-<!-- <KFD-DOCS> -->
+<!-- <SD-DOCS> -->
 
-**Kubernetes Fury vSphere** is an add-on module for the [Kubernetes Fury Distribution (KFD)][kfd-repo] that provides
+**vSphere Add-On Module** is an add-on module for the [SIGHUP Distribution (SD)][kfd-repo] that provides
 packages to integrate vSphere with Kubernetes.
 
-If you are new to KFD please refer to the [official documentation][kfd-docs] on how to get started with KFD.
+If you are new to SD please refer to the [official documentation][sd-docs] on how to get started with SD.
 
 ## Overview
 
-**Kubernetes Fury vSphere** uses a collection of open source tools to install Kubernetes in an vSphere environment.
+**vSphere Add-On Module** uses a collection of open source tools to install Kubernetes in an vSphere environment.
 
 ## Packages
 
-The following packages are included in the Fury Kubernetes vSphere module:
+The following packages are included in the vSphere Add-On Module module:
 
 | Package                                        | Version  | Description                                                                   |
 | ---------------------------------------------- | -------- | ----------------------------------------------------------------------------- |
@@ -41,7 +45,7 @@ Check the [compatibility matrix][compatibility-matrix] for additional informatio
 
 | Tool                    | Version   | Description                                                                                                                                                |
 | ----------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [furyctl][furyctl-repo] | `>=0.29.0` | The recommended tool to download and manage KFD modules and their packages. To learn more about `furyctl` read the [official documentation][furyctl-repo]. |
+| [furyctl][furyctl-repo] | `>=0.29.0` | The recommended tool to download and manage SD modules and their packages. To learn more about `furyctl` read the [official documentation][furyctl-repo]. |
 
 ### Download the packages
 
@@ -65,10 +69,10 @@ bases:
 
 [furyctl-repo]: https://github.com/sighupio/furyctl
 [compatibility-matrix]: https://github.com/sighupio/fury-kubernetes-vsphere/blob/master/docs/COMPATIBILITY_MATRIX.md
-[kfd-repo]: https://github.com/sighupio/fury-distribution
-[kfd-docs]: https://docs.kubernetesfury.com/docs/distribution/
+[kfd-repo]: https://github.com/sighupio/distribution
+[sd-docs]: https://docs.kubernetesfury.com/docs/distribution/
 
-<!-- </KFD-DOCS> -->
+<!-- </SD-DOCS> -->
 
 <!-- <FOOTER> -->
 
